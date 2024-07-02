@@ -26,8 +26,3 @@ A Weather App made in Python (3.11)
 ```
 python3 app.py
 ```  
-
-## Demo:  
-
-https://github.com/Debang5hu/Debang5hu/assets/114200360/39095610-b41f-4f46-9443-2953473dea83  
-
