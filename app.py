@@ -1,13 +1,3 @@
-#!/usr/bin/python3
-
-# _*_ coding:utf-8 _*_
-
-
-# 3rd project
-# weather app [python Internship Project (OASIS INFOBYTE)]
-# @debang5hu
-
-
 import tkinter
 from tkinter import messagebox
 from PIL import Image,ImageTk
@@ -18,11 +8,8 @@ import pytz
 from timezonefinder import TimezoneFinder    #type: ignore
 
 
-
-# <--- global val --->
 COLOR = 'grey'    # #3b3630
 
-# firefox
 header = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0'}
 
 WeatherAPI = getenv('WeatherAPI') # to avoid hardcoding credentials
@@ -31,7 +18,6 @@ UNIT = 'celsius'  # default
 temparature = 0
 
 
-# to get time of all timezone
 def dateandtime(lat,lon):
     tz = TimezoneFinder()
     location = tz.timezone_at(lng=lon,lat=lat)
@@ -43,8 +29,6 @@ def dateandtime(lat,lon):
     date_output.config(text=f"{date}")
     time_output.config(text=f"{time}")
 
-
-# to set the weather icon
 def seticon(file):
     icon = Image.open(f'{file}')
     resizeicon = icon.resize((190,190))
@@ -53,8 +37,6 @@ def seticon(file):
     position.place(x=20,y=100)
     position.image = finalicon  
 
-
-# to pass the icon according to the weather report
 def placeicon(weather):
     if weather == "Rain":
         seticon('images/rainy.png')
@@ -71,7 +53,6 @@ def placeicon(weather):
     else:
         seticon('images/sunny.jpg')
 
-# updating weather info
 def UpdateScreen(humidity,pressure,description,visibility,feel,weather,temparature):
 
     temp_out.config(text=f'{temparature}℃')
@@ -86,7 +67,6 @@ def UpdateScreen(humidity,pressure,description,visibility,feel,weather,temparatu
 
 # http://api.openweathermap.org/data/2.5/weather?q={city}&appid={WeatherAPI}&units=metric
 
-# fetch weather info from openweathermap api 
 def weather(city) -> str :
     global temparature
     # for beautifying
